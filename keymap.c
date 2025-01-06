@@ -47,10 +47,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *         |      |      |      |         |/       /          \      \ |       |      |      |      |
  *         '------------------------------''------'            '------''----------------------------'       */
 [_BASE] = LAYOUT(
-  KC_ESC,  KC_1, KC_2,    KC_3,    KC_4,      KC_5,                                      KC_6,     KC_7,        KC_8,     KC_9,             KC_0,    KC_MINS,
-  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,      KC_T,                                      KC_Y,     KC_U,        KC_I,     KC_O,             KC_P,    KC_BSLS,
-  KC_LSFT, KC_A, KC_S,    KC_D,    KC_F,      KC_G,                                      KC_H,     KC_J,        KC_K,     KC_L,             KC_SCLN, KC_QUOT,
-  KC_LCTL, KC_Z, KC_X,    KC_C,    KC_V,      KC_B,         KC_MUTE,    KC_MPLY,         KC_N,     KC_M,        KC_EQUAL, KC_COMMA,         KC_DOT,  KC_SLSH,
+  KC_ESC,  KC_1, KC_2,    KC_3,    KC_4,      KC_5,                                  KC_6,     KC_7,        KC_8,     KC_9,             KC_0,    KC_MINS,
+  KC_TAB,  KC_Q, KC_W,    KC_E,    KC_R,      KC_T,                                  KC_Y,     KC_U,        KC_I,     KC_O,             KC_P,    KC_BSLS,
+  KC_LSFT, KC_A, KC_S,    KC_D,    KC_F,      KC_G,                                  KC_H,     KC_J,        KC_K,     KC_L,             KC_SCLN, KC_QUOT,
+  KC_LCTL, KC_Z, KC_X,    KC_C,    KC_V,      KC_B,         KC_MUTE,    KC_MPLY,     KC_N,     KC_M,        KC_EQUAL, KC_COMMA,         KC_DOT,  KC_SLSH,
                  KC_LGUI, KC_LALT, MO(_FUNC), KC_BACKSPACE, KC_ENT,     MO(_NUMPAD), KC_SPACE, MO(_ALTNUM), XXXXXXX,  MO(_LAYERSWITCH)
 ),
 /* NUMPAD
@@ -147,11 +147,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *         | CMD  |      | NUM  |         |/       /          \      \ |       |      |      |      |
  *         '------------------------------''------'            '------''----------------------------'       */
 [_BLENDER] = LAYOUT(
-  KC_ESC,  KC_1, KC_2,          KC_3,    KC_4,          KC_5,                              KC_6,     KC_7,    KC_8,     KC_9,     KC_0,    KC_MINS,
-  KC_TAB,  KC_Q, KC_W,          KC_E,    KC_R,          KC_T,                              KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,    KC_BSLS,
-  KC_LSFT, KC_A, KC_S,          KC_D,    KC_F,          KC_G,                              KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN, KC_QUOT,
-  KC_LCTL, KC_Z, KC_X,          KC_C,    KC_V,          KC_B,         KC_MUTE,    KC_MPLY, KC_N,     KC_M,    KC_EQUAL, KC_COMMA, KC_DOT,  KC_SLSH,
-                 MO(_BLENDCMD), KC_LALT, MO(_BLENDNUM), KC_BACKSPACE, KC_ENT,     XXXXXXX, KC_SPACE, XXXXXXX, XXXXXXX,  XXXXXXX
+  KC_ESC,  KC_1, KC_2,          KC_3,    KC_4,          KC_5,                              KC_6,     KC_7,    KC_8,     KC_9,            KC_0,    KC_MINS,
+  KC_TAB,  KC_Q, KC_W,          KC_E,    KC_R,          KC_T,                              KC_Y,     KC_U,    KC_I,     KC_O,            KC_P,    KC_BSLS,
+  KC_LSFT, KC_A, KC_S,          KC_D,    KC_F,          KC_G,                              KC_H,     KC_J,    KC_K,     KC_L,            KC_SCLN, KC_QUOT,
+  KC_LCTL, KC_Z, KC_X,          KC_C,    KC_V,          KC_B,         KC_MUTE,    KC_MPLY, KC_N,     KC_M,    KC_EQUAL, KC_COMMA,        KC_DOT,  KC_SLSH,
+                 MO(_BLENDCMD), KC_LALT, MO(_BLENDNUM), KC_BACKSPACE, KC_ENT,     XXXXXXX, KC_SPACE, XXXXXXX, XXXXXXX,  MO(_LAYERSWITCH)
 ),
 /* Blender Numpad
  * ,------------------------------------------.                    ,---------------------------------------------.
@@ -208,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *             '---------------------------''------'            '------''---------------------------'        */
 [_LAYERSWITCH] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_BASE),
-  XXXXXXX, XXXXXXX, XXXXXXX, KC_Z,    XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO_(_BLENDER),
+  XXXXXXX, XXXXXXX, XXXXXXX, KC_Z,    XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_BLENDER),
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_GAMES),
                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -298,19 +298,19 @@ bool oled_task_user(void) {
                 rgblight_sethsv(1, 255, 255);
                 break;
             case _BLENDER:
-                oled_write_P("----\nSwch\nLayer\n----\n", false);
+                oled_write_P("----\nBLND\nLayer\n----\n", false);
                 rgblight_mode(1); // Beacon Rainbow
-                rgblight_sethsv(25, 255, 255);
+                rgblight_sethsv(30, 255, 255);
                 break;
             case _BLENDCMD:
-                oled_write_P("----\nSwch\nLayer\n----\n", false);
-                rgblight_mode(6); // Beacon Rainbow
-                rgblight_sethsv(25, 255, 255);
+                oled_write_P("----\nBCMD\nLayer\n----\n", false);
+                rgblight_mode(7); // Beacon Rainbow
+                rgblight_sethsv(30, 255, 255);
                 break;
             case _BLENDNUM:
-                oled_write_P("----\nSwch\nLayer\n----\n", false);
+                oled_write_P("----\nBNUM\nLayer\n----\n", false);
                 rgblight_mode(7); // Beacon Rainbow
-                rgblight_sethsv(25, 255, 255);
+                rgblight_sethsv(30, 255, 255);
                 break;
         }
         // Call render function to render Triforce
