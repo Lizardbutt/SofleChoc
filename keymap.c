@@ -267,10 +267,9 @@ bool oled_task_user(void) {
         switch (get_highest_layer(layer_state)) {
             // Layer states, displays on the OLED
             case _BASE:
-                oled_write_P("----\nMain\nLayer\n----\n", false);
+                oled_write_P("----\nMain\nLayer\n----\n", false); // OLED write
                 rgblight_mode(11); // Spiral fades saturation
-                // rgblight_mode(26); // Hue Breathing
-                rgblight_sethsv(125, 255, 255);
+                rgblight_sethsv(127, 255, 255); // HSV
                 break;
             case _FUNC:
                 oled_write_P("----\nNum\nLayer\n----\n", false);
@@ -283,34 +282,34 @@ bool oled_task_user(void) {
                 rgblight_sethsv(190, 255, 255);
                 break;
             case _NUMPAD:
-                oled_write_P("----\nChar\nLayer\n----\n", false);
-                rgblight_mode(9);
-                rgblight_sethsv(1, 255, 255);
+                oled_write_P("----\nNum\nLayer\n----\n", false);
+                rgblight_mode(11);
+                rgblight_sethsv(148, 255, 255);
                 break;
             case _GAMES:
                 oled_write_P("----\nGame\nLayer\n----\n", false);
                 rgblight_mode(26);
-                rgblight_sethsv(200, 255, 255);
+                rgblight_sethsv(8-5, 255, 255);
                 break;
             case _LAYERSWITCH:
                 oled_write_P("----\nSwch\nLayer\n----\n", false);
-                rgblight_mode(20); // Beacon Rainbow
+                rgblight_mode(20);
                 rgblight_sethsv(1, 255, 255);
                 break;
             case _BLENDER:
                 oled_write_P("----\nBLND\nLayer\n----\n", false);
-                rgblight_mode(1); // Beacon Rainbow
-                rgblight_sethsv(30, 255, 255);
+                rgblight_mode(1);
+                rgblight_sethsv(20, 255, 255);
                 break;
             case _BLENDCMD:
                 oled_write_P("----\nBCMD\nLayer\n----\n", false);
-                rgblight_mode(7); // Beacon Rainbow
-                rgblight_sethsv(30, 255, 255);
+                rgblight_mode(7);
+                rgblight_sethsv(15, 255, 255);
                 break;
             case _BLENDNUM:
                 oled_write_P("----\nBNUM\nLayer\n----\n", false);
-                rgblight_mode(7); // Beacon Rainbow
-                rgblight_sethsv(30, 255, 255);
+                rgblight_mode(7);
+                rgblight_sethsv(10, 255, 255);
                 break;
         }
         // Call render function to render Triforce
